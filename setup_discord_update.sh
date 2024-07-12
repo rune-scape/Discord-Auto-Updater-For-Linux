@@ -27,7 +27,7 @@ DISCORD_DOWNLOAD_URL="https://discord.com/api/download?platform=linux&format=deb
 TEMP_DIR="/tmp/discord_update"
 
 # Wrapper script URL
-WRAPPER_SCRIPT_URL="https://raw.githubusercontent.com/Doc0x1/Discord-Auto-Updater-For-Linux/master/discord-launcher.sh"
+WRAPPER_SCRIPT_URL="https://raw.githubusercontent.com/rune-scape/Discord-Auto-Updater-For-Linux/master/discord-launcher.sh"
 
 # Create temp directory if it doesn't exist
 mkdir -p "$TEMP_DIR"
