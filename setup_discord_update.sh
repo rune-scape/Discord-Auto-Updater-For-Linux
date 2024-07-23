@@ -5,7 +5,7 @@ set -e
 # Directory where Discord is installed
 DISCORD_DIR="/usr/share/discord"
 
-if [[ ! -f "$DISCORD_DIR/Discord" ]] && [[ ! -f "$DISCORD_DIR/Discord.orig" ]]; then
+if [[ ! -f "$DISCORD_DIR/Discord" || -h "$DISCORD_DIR/Discord" ]] && [[ ! -f "$DISCORD_DIR/Discord.orig" ]]; then
     echo "Discord installation not found in $DISCORD_DIR. Please ensure Discord is installed." >&2
     exit 1
 fi
@@ -47,7 +47,7 @@ if [[ $? -ne 0 ]]; then
     exit 1
 fi
 
-if [[ -f "$DISCORD_DIR/Discord" ]]; then
+if [[ -f "$DISCORD_DIR/Discord" && ! -h "$DISCORD_DIR/Discord" ]]; then
     # Backup the original Discord launcher
     sudo mv "$DISCORD_DIR/Discord" "$DISCORD_DIR/Discord.orig"
     if [[ $? -ne 0 ]]; then
