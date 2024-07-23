@@ -47,11 +47,11 @@ if [[ $? -ne 0 ]]; then
     exit 1
 fi
 
-if [[ ! -f "$DISCORD_DIR/Discord.orig" ]]; then
+if [[ -f "$DISCORD_DIR/Discord" ]]; then
     # Backup the original Discord launcher
     sudo mv "$DISCORD_DIR/Discord" "$DISCORD_DIR/Discord.orig"
     if [[ $? -ne 0 ]]; then
-        echo "Failed to move files." >&2
+        echo "Failed to move Discord executable." >&2
         exit 1
     fi
 fi
