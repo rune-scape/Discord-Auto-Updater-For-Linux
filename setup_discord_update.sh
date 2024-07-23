@@ -56,9 +56,9 @@ if [[ ! -f "$DISCORD_DIR/Discord.orig" ]]; then
     fi
 fi
 
-sudo mv -f "$DISCORD_DIR/discord-launcher.sh" "$DISCORD_DIR/Discord"
+sudo ln -fs "$DISCORD_DIR/discord-launcher.sh" "$DISCORD_DIR/Discord"
 if [[ $? -ne 0 ]]; then
-    echo "Failed to move files." >&2
+    echo "Failed to replace Discord executable." >&2
 
     if [[ -f "$DISCORD_DIR/Discord.orig" ]]; then
         sudo mv -f "$DISCORD_DIR/Discord.orig" "$DISCORD_DIR/Discord"
