@@ -56,7 +56,7 @@ if [[ -f "$DISCORD_DIR/Discord" && ! -h "$DISCORD_DIR/Discord" ]]; then
     fi
 fi
 
-sudo ln -fs "$DISCORD_DIR/discord-launcher.sh" "$DISCORD_DIR/Discord"
+sudo ln -frs "$DISCORD_DIR/discord-launcher.sh" "$DISCORD_DIR/Discord"
 if [[ $? -ne 0 ]]; then
     echo "Failed to replace Discord executable." >&2
 
