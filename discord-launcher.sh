@@ -64,16 +64,9 @@ if [[ "$INSTALLED_VERSION" != "$LATEST_VERSION" ]]; then
     echo "Updating Discord from version $INSTALLED_VERSION to $LATEST_VERSION"
 
     # Update Discord
-    sudo dpkg -i "$TEMP_DIR/discord.deb"
+    pkexec bash -c "dpkg -i \"$TEMP_DIR/discord.deb\" && mv \"$DISCORD_DIR/Discord\" \"$DISCORD_DIR/Discord.orig\" && ln -frs \"$DISCORD_DIR/discord-launcher.sh\" \"$DISCORD_DIR/Discord\" || exit 1"
     if [[ $? -ne 0 ]]; then
-        show_error_message "Failed updating Discord."
-        rm -rf "$TEMP_DIR"
-        exit 1
-    fi
-
-    sudo ln -frs "$DISCORD_DIR/discord-launcher.sh" "$DISCORD_DIR/Discord"
-    if [[ $? -ne 0 ]]; then
-        show_error_message "Failed to replace Discord executable."
+        show_error_message "Failed to update Discord."
         rm -rf "$TEMP_DIR"
         exit 1
     fi
